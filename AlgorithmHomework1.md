@@ -11,6 +11,7 @@
     用字典记录数字，以便在找到成对的另一个数的时候，可以快速的检索到前一个数的索引
   
   - Leetcode提交结果
+  
     ![result](AlgorithmHomework1.assets/7222676-c485f42b177afce2.png)
   - 代码：
     ```python
@@ -27,6 +28,7 @@
   - 算法思路：二分法
   
   - Leetcode提交结果
+  
     ![result](AlgorithmHomework1.assets/7222676-6a5936bab1f54a06.png)
   - 代码：
     ```python
@@ -50,6 +52,7 @@
   - 算法思路：动态规划。由于当前状态只取决于前两个状态，所以dp table可以精简为只用两个数表示
   
   - Leetcode提交结果
+  
     ![result](AlgorithmHomework1.assets/7222676-dde7e98b91cb5454.png)
   - 代码：
     ```python
