@@ -10,7 +10,9 @@
 
 ## 题解
 
-- ### Leetcode problem 7（[整数反转](https://leetcode-cn.com/problems/reverse-integer/)）
+- ### Leetcode problem 7
+
+  > [整数反转](https://leetcode-cn.com/problems/reverse-integer/)
 
   - **算法思路：**
 
@@ -37,7 +39,9 @@
             return 0 if result > INT_MAX_VAL or result < INT_MIN_VAL else isNegitive * result
     ```
 
-- ### Leetcode problem 13（[罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/)）
+- ### Leetcode problem 13
+
+  > [罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/)
 
   - **算法思路：**
 
@@ -81,11 +85,13 @@
             return result
     ```
 
-- ### Leetcode problem 3（[加一](https://leetcode-cn.com/problems/plus-one/)）
+- ### Leetcode problem 3
+
+  > [加一](https://leetcode-cn.com/problems/plus-one/)
 
   - **算法思路：**
-
-    - 从后往前遍历，每次 + 1，如果和等于10，则发生进位，否则算法返回
+  
+  - 从后往前遍历，每次 + 1，如果和等于10，则发生进位，否则算法返回
     - 遍历结束发现 *tmp* 仍然不为0，则表示数组的值为全9，需要在数组前添加一个元素
 
   - **Leetcode提交结果：**
@@ -93,7 +99,7 @@
     ![image-20200320134010709](AlgorithmHomework2.assets/image-20200320134010709.png)
 
   - **代码：**
-
+  
     ```python
     class Solution:
         def plusOne(self, digits: List[int]) -> List[int]:
@@ -105,7 +111,7 @@
                 index -= 1
             if tmp != 0:
                 digits.insert(0, 1)
-            return digits
+          return digits
     ```
-
+  
     

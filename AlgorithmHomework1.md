@@ -7,11 +7,14 @@
   3道上课讲的LeetCode题目1，69，70
 
 - ## Leetcode problem 1 (两数之和)
-  - 算法思路：<br/>
-    用字典记录数字，以便在找到成对的另一个数的时候，可以快速的检索到前一个数的索引
   
+  - 算法思路：
+    
+  用字典记录数字，以便在找到成对的另一个数的时候，可以快速的检索到前一个数的索引
+    
   - Leetcode提交结果
     ![result](AlgorithmHomework1.assets/7222676-c485f42b177afce2.png)
+    
   - 代码：
     ```python
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -19,10 +22,10 @@
         for index, num in enumerate(nums):
             if num in myDict:
                 return [myDict[num], index]
-            else:
+          else:
                 myDict[target - num] = index
     ```
-
+  
 - ## Leetcode problem 69 (x 的平方根)
   - 算法思路：二分法
   

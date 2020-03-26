@@ -10,7 +10,9 @@ Leetcode: 35,58,83
 
 ## 题解：
 
-- ### Leetcode problem 35（[搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)）
+- ### Leetcode problem 35
+
+  > [搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)
 
   - **算法思路：** 
 
@@ -43,7 +45,9 @@ Leetcode: 35,58,83
                 return right + 1
     ```
 
-- ### Leetcode problem 58（[最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)）
+- ### Leetcode problem 58
+
+  > [最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
 
   - **算法思路：** 
 
@@ -78,11 +82,13 @@ Leetcode: 35,58,83
             return count
     ```
 
-- ### Leetcode problem 83（[删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)）
+- ### Leetcode problem 83
+
+  > [删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
 
   - **算法思路：** 
-
-    - 用一个set记录当前遍历过的值
+  
+  - 用一个set记录当前遍历过的值
     - 遍历到每一个节点，用set检查当前值是否存在于set，如果存在则删除该节点
 
   - **Leetcode提交结果：**
@@ -90,7 +96,7 @@ Leetcode: 35,58,83
     ![image-20200313213736914](https://raw.githubusercontent.com/SunnyQjm/picgo_0/master/img/image-20200313211905775.png)
 
   - **代码：**
-
+  
     ```python
     class Solution:
         def deleteDuplicates(self, head: ListNode) -> ListNode:
@@ -105,7 +111,7 @@ Leetcode: 35,58,83
                 else:
                     s.add(cur.val)
                 pre, cur = cur, cur.next
-            return head
+          return head
     ```
-
+  
     
