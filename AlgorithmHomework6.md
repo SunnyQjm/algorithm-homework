@@ -19,12 +19,7 @@ Leetcode: 5, 64, 120
     - 使用动态规划的思想；
 
     - 状态转移方程如下：
-      $$
-      P(i, j) = \left\{ \begin{array}{ll}
-      True & \textrm{if $P(i + 1, j - 1) $ and $ S_i == S_j $}\\
-      False & \textrm{其它}\\
-      \end{array} \right.
-      $$
+      $P(i, j) = \left\{ \begin{array}{ll}True & \textrm{if $P(i + 1, j - 1) $ and $ S_i == S_j $}\\False & \textrm{其它}\\\end{array} \right.$
 
     - 首先判断长度为1的子串，再判断长度为2的子串，再判断长度为3的子串，以此类推。
 
@@ -61,12 +56,7 @@ Leetcode: 5, 64, 120
 
     - 首先将最下面一排的路径开销自右往左以此叠加，把最右边一排的路径开销自下往上以此叠加，接着其它情况使用与下述状态转换方程：
 
-    $$
-    P(i, j) = \left\{ \begin{array}{ll}
-            P(i, j) + P(i + 1, j) & \textrm{if $ P(i, j + 1) >= P(j + 1) $}\\
-          P(i, j) + P(i, j + 1) & \textrm{if $ P(i, j + 1) < P(j + 1) $}\\
-            \end{array} \right.
-    $$
+    $P(i, j) = \left\{ \begin{array}{ll}P(i, j) + P(i + 1, j) & \textrm{if $ P(i, j + 1) >= P(j + 1) $}\\P(i, j) + P(i, j + 1) & \textrm{if $ P(i, j + 1) < P(j + 1) $}\\\end{array} \right.$
 
   - **Leetcode提交结果：**
 
@@ -98,12 +88,7 @@ Leetcode: 5, 64, 120
   
     - 状态转移方程如下：
   
-    $$
-    P(row, index) = \left\{ \begin{array}{ll}
-                  P(row, index) & \textrm{if $ row == len(triangle) - 1 $}\\
-              P(row, index) + min(P(row + 1, index), P(row + 1, index + 1))& \textrm{if $ P(i, j + 1) < P(j + 1) $}\\
-                  \end{array} \right.
-    $$
+    $P(row, index) = \left\{ \begin{array}{ll}P(row, index) & \textrm{if $ row == len(triangle) - 1 $}\\P(row, index) + min(P(row + 1, index), P(row + 1, index + 1))& \textrm{if $ P(i, j + 1) < P(j + 1) $}\\\end{array} \right.$
   
   - **Leetcode提交结果：**
   
