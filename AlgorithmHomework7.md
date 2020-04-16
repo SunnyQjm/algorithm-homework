@@ -16,90 +16,96 @@
 
     - 使用动态规划的思想；
 
-    - 状态转移方程如下：
+    - 令`wArr`为重量数组，`vArr`为价值数组，b为背包的最大容量限制，定义`f[i]`为最大容量限制为i的情况下的最大价值，则状态转移方程如下：
 
-      $P(i, j)  = \begin{cases}True &\text{if } P(i + 1, j - 1)==True ,  S_i == S_j  \\False &\text{if 其它 } \end{cases}$
+      $f[b] = max\{f[b], f[b - wArr[i]] + vArr[i]\}$
 
-    - 首先判断长度为1的子串，再判断长度为2的子串，再判断长度为3的子串，以此类推。
-
-  - **Leetcode提交结果：**
-
-    ![image-20200407102849523](AlgorithmHomework7.assets/image-20200407102849523.png)
+    - 使用一维的dp数组保存中间的计算值
 
   - **代码：**
 
     ```python
-    class Solution:
-        def longestPalindrome(self, s: str) -> str:
-            arr = [[False] * len(s) for i in range(len(s))]
-            for i in range(len(s)):
-                arr[i][i] = True
-            maxLen, maxStrStart, maxStrEnd = 1, 0, 1
-            for span in range(1, len(s)):
-                left, right = 0, span
-                while right < len(s):
-                    arr[left][right] = True if s[left] == s[right] and (span == 1 or arr[left + 1][right - 1]) else False
-                    if arr[left][right] and right - left + 1 > maxLen:
-                        maxLen, maxStrStart, maxStrEnd = right - left + 1, left, right + 1
-                    left, right = left + 1, right + 1
-            return s[maxStrStart: maxStrEnd]
+    def getMaxValue(wArr, vArr, b):
+        # 初始化dp数组
+        dp = [0 for _ in range(b + 1)]
+        for i in range(len(wArr)):
+            for c in range(b, wArr[i] - 1, -1):
+                dp[c] = max(dp[c], dp[c - wArr[i]] + vArr[i])
+        return dp[b]
+    
+    if __name__ == '__main__':
+        print(getMaxValue([1, 2, 5, 6, 7], [1, 6, 18, 22, 28], 11))
+    
+    # 输出
+    40
     ```
 
-- ### Leetcode problem 64
-
-  >   [最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
+- ### 投资问题
 
   - **算法思路：** 
 
-    - 采用动态规划的思想，自右下角向左上脚遍历。
+    - 采用动态规划的思想
 
-    - 首先将最下面一排的路径开销自右往左以此叠加，把最右边一排的路径开销自下往上以此叠加，接着其它情况使用与下述状态转换方程：
+    - 定义$F_k(x)$表示前k个项目投资 x 元的最大收益， $f_k(x)$ 表示第k个项目投资x元的收益
 
-      $P(i, j)  = \begin{cases}P(i, j) + P(i + 1, j) &\text{if } P(i, j + 1) >= P(j + 1) \\P(i, j) + P(i, j + 1) &\text{if }P(i, j + 1) < P(j + 1) \end{cases}$
+    - 则状态转换方程如下：
 
-  - **Leetcode提交结果：**
-
-    ![image-20200407105454180](AlgorithmHomework7.assets/image-20200407105454180.png)
+      $F_k(x)  = \begin{cases}\max_{0 \le x_k \le x} \{f_k(x_k) + F_{k - 1}(x - x_k)\}&k > 1\\f_1(x) &k = 1 \end{cases}$
 
   - **代码：**
 
     ```python
-    class Solution:
-        def minPathSum(self, grid: List[List[int]]) -> int:
-            rowNum, colNum = len(grid), len(grid[0])
-            for col in range(colNum - 2, -1, -1):
-                grid[rowNum - 1][col] = grid[rowNum - 1][col] + grid[rowNum - 1][col + 1]
-            for row in range(rowNum - 2, -1, -1):
-                grid[row][colNum - 1] = grid[row][colNum - 1] + grid[row + 1][colNum - 1]
-            for col in range(colNum - 2, -1, -1):
-                for row in range(rowNum - 2, -1, -1):
-                    grid[row][col] = grid[row][col] + min(grid[row + 1][col], grid[row][col + 1])
-            return grid[0][0]
+    def getMaxProfit(f, x):
+        """
+        dp[i][j] 表示前 i + 1 个项目投资j元的最大收益
+        :param f:
+        :param x:
+        :return:
+        """
+        columnNum = len(f[0])
+        rowNum = len(f)
+        dp = [[0 for _ in range(columnNum)] for _ in range(rowNum)]
+        dp[0] = f[0]
+        for i in range(1, len(f)):
+            for j in range(0, x + 1):
+                for k in range(0, j + 1):
+                    if dp[i][j] < f[i][k] + dp[i - 1][j - k]:
+                        dp[i][j] = f[i][k] + dp[i - 1][j - k]
+        return dp[rowNum - 1][columnNum - 1]
+    
+    
+    if __name__ == '__main__':
+        print(getMaxProfit([
+            [0, 11, 12, 13, 14, 15],
+            [0, 0, 5, 10, 15, 20],
+            [0, 2, 10, 30, 32, 40],
+            [0, 20, 21, 22, 23, 24]
+        ], 5))
+        
+    # 输出
+    61
     ```
 
-- ### Leetcode problem 120
+- ### Leetcode problem 746
 
-  >  [三角形最小路径和](https://leetcode-cn.com/problems/triangle/)
+  >  [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/)
 
   - **算法思路：** 
 
-    - 用动态规划的思想，自底向上一次计算到当前访问节点到叶子节点的最短路径；
-
-    - 状态转移方程如下：
-
-      $P(row, index)  = \begin{cases}P(row, index) &\text{if } row == len(triangle) - 1 \\P(row, index) + min(P(row + 1, index), P(row + 1, index + 1)) &\text{if }row < len(triangle) - 1 \end{cases}$
+    动态规划。反向遍历，由于当前状态只取决于前两个状态，所以dp table可以精简为只用两个数表示
 
   - **Leetcode提交结果：**
 
-    ![image-20200407122505839](AlgorithmHomework7.assets/image-20200407122505839.png)
+    ![image-20200416230344311](AlgorithmHomework7.assets/image-20200416230344311.png)
 
   - **代码：**
 
     ```python
-    class Solution:
-      def minimumTotal(self, triangle: List[List[int]]) -> int:
-            for row in range(len(triangle) - 2, -1, -1):
-                for index in range(len(triangle[row])):
-                    triangle[row][index] = triangle[row][index] + min(triangle[row + 1][index], triangle[row + 1][index + 1])
-            return triangle[0][0]
+  class Solution(object):
+        def minCostClimbingStairs(self, cost):
+          f1 = f2 = 0	# 顶部cost为0
+            for x in reversed(cost):
+                f1, f2 = x + min(f1, f2), f1
+            return min(f1, f2)
     ```
+

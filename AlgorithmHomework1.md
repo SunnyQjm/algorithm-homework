@@ -10,8 +10,9 @@
   
   - 算法思路：
     
+  
   用字典记录数字，以便在找到成对的另一个数的时候，可以快速的检索到前一个数的索引
-    
+  
   - Leetcode提交结果
   
     ![result](AlgorithmHomework1.assets/7222676-c485f42b177afce2.png)
@@ -52,16 +53,17 @@
     ```
 
 - ## Leetcode problem 70 (爬楼梯)
-  - 算法思路：动态规划。由于当前状态只取决于前两个状态，所以dp table可以精简为只用两个数表示
+  - 算法思路：动态规划。反向遍历，由于当前状态只取决于前两个状态，所以dp table可以精简为只用两个数表示
   
   - Leetcode提交结果
   
-    ![result](AlgorithmHomework1.assets/7222676-dde7e98b91cb5454.png)
+    ![image-20200416230211927](AlgorithmHomework1.assets/image-20200416230211927.png)
   - 代码：
     ```python
-    def climbStairs(self, n: int) -> int:
-        pre, cur = 0, 1
-        for i in range(1, n + 1):
-            pre, cur = cur, pre + cur
-        return cur
+    class Solution(object):
+        def minCostClimbingStairs(self, cost):
+            f1 = f2 = 0	# 顶部cost为0
+            for x in reversed(cost):
+                f1, f2 = x + min(f1, f2), f1
+            return min(f1, f2)
     ```
