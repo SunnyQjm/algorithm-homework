@@ -73,7 +73,6 @@
                         dp[i][j] = f[i][k] + dp[i - 1][j - k]
         return dp[rowNum - 1][columnNum - 1]
     
-    
     if __name__ == '__main__':
         print(getMaxProfit([
             [0, 11, 12, 13, 14, 15],
@@ -85,7 +84,7 @@
     # 输出
     61
     ```
-
+  
 - ### Leetcode problem 746
 
   >  [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/)
