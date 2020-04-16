@@ -6,3 +6,5 @@
 - [第四次作业](AlgorithmHomework4.md)
 - [第五次作业](AlgorithmHomework5.md)
 - [第六次作业](AlgorithmHomework6.md)
+- [第七次作业](AlgorithmHomework7.md)
+
