@@ -21,7 +21,7 @@ Leetcode: 35,58,83
 
   - **Leetcode提交结果：**
 
-    ![image-20200313210334196](https://raw.githubusercontent.com/SunnyQjm/picgo_0/master/img/image-20200313210334196.png)
+    ![image-20200313210334196](AlgorithmHomework3.assets/image-20200313210334196.png)
 
   - **代码：**
 
@@ -56,7 +56,7 @@ Leetcode: 35,58,83
 
   - **Leetcode提交结果：**
 
-    ![image-20200313211905775](https://raw.githubusercontent.com/SunnyQjm/picgo_0/master/img/image-20200313213736914.png)
+    ![image-20200313211905775](AlgorithmHomework3.assets/image-20200313213736914.png)
 
   - **代码：**
 
@@ -89,12 +89,13 @@ Leetcode: 35,58,83
   - **算法思路：** 
   
   - 用一个set记录当前遍历过的值
-    - 遍历到每一个节点，用set检查当前值是否存在于set，如果存在则删除该节点
-
-  - **Leetcode提交结果：**
-
-    ![image-20200313213736914](https://raw.githubusercontent.com/SunnyQjm/picgo_0/master/img/image-20200313211905775.png)
-
+    
+- 遍历到每一个节点，用set检查当前值是否存在于set，如果存在则删除该节点
+    
+- **Leetcode提交结果：**
+  
+  ![image-20200313213736914](AlgorithmHomework3.assets/image-20200313211905775.png)
+  
   - **代码：**
   
     ```python
