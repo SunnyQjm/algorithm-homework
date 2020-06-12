@@ -50,9 +50,9 @@ Leetcode: 743, 847
 
       ```
   
-- ### Leetcode problem 934
+- ### Leetcode problem 847
 
-  > [最短的桥](https://leetcode-cn.com/problems/shortest-bridge/)
+  > [访问所有节点的最短路径](https://leetcode-cn.com/problems/shortest-path-visiting-all-nodes/)
 
   - **算法思路：** 
     1. 以每个点为起点，同时进行BFS搜索；
